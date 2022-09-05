@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors');
 const { dbConection, preload } = require('../config/db');
+const swaggerUI = require('swagger-ui-express')
+const openApiConfiguration = require('../docs/swagger')
 
 class Server {
 
@@ -13,8 +15,8 @@ class Server {
   }
 
   async conectarDB() {
-    await dbConection();
     await preload();
+    await dbConection();
   }
 
 
@@ -26,12 +28,13 @@ class Server {
     //READ BODY
     this.app.use(express.json())
 
+    //DOCUMENTATION
+    this.app.use('/documentation', swaggerUI.serve, swaggerUI.setup(openApiConfiguration))
   }
 
-
-
   routes() {
-    this.app.use('/api/nomina', require('../routes/nomina'));
+    this.app.use('/api/nomina', require('../routes/nomina')),
+      this.app.use('/api/mail', require('../routes/mail.js'))
   }
 
   listen() {

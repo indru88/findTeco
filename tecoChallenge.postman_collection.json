@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "8b37c160-63df-4d2d-8371-0d17f0b67e01",
+		"name": "tecoChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6020839"
+	},
+	"item": [
+		{
+			"name": "get_all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/nomina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"nomina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendMail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "sendMail",
+						"value": "true",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/mail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"mail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_x_dni",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/nomina/15622186",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"nomina",
+						"15622186"
+					],
+					"query": [
+						{
+							"key": "dni",
+							"value": "33012457",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"Pepe\",\n    \"apellido\":\"Saraza\",\n    \"legajo\":\"u555255\",\n    \"dni\":\"124661519\",\n    \"fechacumpleanos\":\"1958/07/07\",\n    \"rol\":\"Analista Sr\",\n    \"dnijefe\":\"123123123\",\n    \"gerencia\": \"CTO\",\n    \"sector\":\"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/nomina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"nomina"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"juan2\",\n    \"apellido\":\"Saraza2\",\n    \"legajo\":\"u555255\",\n    \"dni\":\"32323321\",\n    \"fechacumpleanos\":\"1958/07/07\",\n    \"rol\":\"Analista Sr\",\n    \"dniJefe\":\"123123123\",\n    \"gerencia\": \"CTO\",\n    \"sector\":\"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/nomina/15622186",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"nomina",
+						"15622186"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/nomina/15622186",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"nomina",
+						"15622186"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

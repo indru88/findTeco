@@ -45,6 +45,7 @@ const nominaGetAll = async (req, res = response) => {
 const nominaPost = async (req, res = response) => {
   try {
     const body = matchedData(req);
+    console.log(body)
     const usuario = new Usuario(body);
     await usuario.save();
     res.status(201)
@@ -61,13 +62,14 @@ const nominaPost = async (req, res = response) => {
  */
 const nominaPut = async (req, res = response) => {
   try {
-    const { dni, ...body } = matchedData(req.body);
-    console.log()
-    const data = await Usuario.findOneAndUpdate({ dni: req.params.id }, body);
+    const { dni, ...body } = req.body;
+    console.log(body)
+    const data = await Usuario.findOneAndUpdate({ dni: req.params.id }, { $set: body });
     if (data === null) {
       handleHttpError(res, 'NOT_FOUND', 400)
     } else {
       res.json({ data });
+      res.status(201)
     }
 
   } catch (e) {
@@ -92,6 +94,7 @@ const nominaDelete = async (req, res = response) => {
     handleHttpError(res, 'ERROR_DELETE_EMPLOYEE')
   }
 }
+
 
 module.exports = {
   nominaGetAll,

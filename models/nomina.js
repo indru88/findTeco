@@ -3,9 +3,11 @@ const { Schema, model, default: mongoose } = require('mongoose')
 const nominaSchema = new Schema({
   nombre: {
     type: String,
+    require: true
   },
   apellido: {
     type: String,
+    require: true
   },
   legajo: {
     type: String,
@@ -20,7 +22,7 @@ const nominaSchema = new Schema({
   rol: {
     type: String,
   },
-  dniJefe: {
+  dnijefe: {
     type: String,
   },
   gerencia: {
@@ -34,7 +36,7 @@ const nominaSchema = new Schema({
   timestamps: true
 })
 
+module.exports = mongoose.model('Usuario', nominaSchema,)
 
-module.exports = mongoose.model('Usuario', nominaSchema)
 
 

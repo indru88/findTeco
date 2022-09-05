@@ -19,7 +19,7 @@ const validatorAdd = [
   check('rol')
     .exists()
     .notEmpty(),
-  check('dniJefe')
+  check('dnijefe')
     .exists(),
   check('gerencia')
     .exists()

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Usuario = require('../models/nomina')
+const nombreDni = require('../models/nombreDni')
 const cargarExcel = require('../utils/excel')
 
 
@@ -16,19 +17,16 @@ const dbConection = async () => {
   }
 }
 
-const preload = async () => {
-  datos = cargarExcel()
-  // Usuario.findOne({ name: 'usuarios' }).then(res => {
-  //   if (res) {
+const preload = () => {
+  const datos = cargarExcel()
+  // Usuario.count({}, function (err, count) {
+  //   if (count > 10) {
   //     mongoose.connection.collection('usuarios').drop()
+  //     mongoose.connection.collection('nombrednis').drop()
   //   }
   // })
-  Usuario.count({}, function (err, count) {
-    if (count > 0) {
-      mongoose.connection.collection('usuarios').drop()
-    }
-  })
-  const newNomina = await Usuario.insertMany(datos)
+  const newNomina = Usuario.insertMany(datos)
+  const nombDni = nombreDni.insertMany(datos)
 }
 
 module.exports = {
