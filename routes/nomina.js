@@ -47,6 +47,7 @@ router.get('/:dni', nominaGet)
  *        in: path
  *        schema:
  *          type: string
+ *          example: 29874534
  *      responses:
  *        '200':
  *          description: Retorna la informacion de un registro.
@@ -110,6 +111,7 @@ router.put('/:id', nominaPut)
  *        in: path
  *        schema:
  *          type: string
+ *          example: 29874534
  *      responses:
  *        '200':
  *          description: Retorna el objeto modificado en la coleccion.
@@ -121,7 +123,32 @@ router.put('/:id', nominaPut)
  *          content:
  *            application/json:
  *              schema:
- *                 $ref: "#/components/schemas/nomina"
+ *                  type: object
+ *                  properties:
+ *                    nombre:
+ *                      type: string
+ *                      example: Juan
+ *                    apellido:
+ *                      type: string
+ *                      example: Perez
+ *                    legajo:
+ *                      type: string
+ *                      example: u555555
+ *                    fechacumpleanos:
+ *                      type: date
+ *                      example: 1958/07/07
+ *                    rol:
+ *                      type: string
+ *                      example: "Analista"
+ *                    dnijefe:
+ *                      type: string
+ *                      example: 123123123
+ *                    gerencia:
+ *                      type: string
+ *                      example: CTO
+ *                    sector:
+ *                      type: string
+ *                      example: Fibertel
  *    responses:
  *      '200':
  *        description: Retorna el objeto insertado en la coleccion con stado 201
@@ -133,11 +160,11 @@ router.put('/:id', nominaPut)
  *        description: No tiene permisos '403'
  */
 
-router.delete('/:id', nominaDelete)
+router.delete('/:dni', nominaDelete)
 /**
  * Delete Employee
  * @openapi
- * /nomina/{id}:
+ * /nomina/{dni}:
  *    delete:
  *      tags:
  *        - Nomina
@@ -146,12 +173,13 @@ router.delete('/:id', nominaDelete)
  *      security:
  *        - bearerAuth: []
  *      parameters:
- *      - name: id
+ *      - name: dni
  *        in: path
  *        description: DNI de empleado a retornar
  *        required: true
  *        schema:
  *          type: string
+ *          example: 29874534
  *      responses:
  *        '200':
  *          description: Retorna el objecto de la cancion.

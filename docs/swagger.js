@@ -25,31 +25,40 @@ const swaggerDefinition = {
         required: ['nombre', 'apellido', 'dni'],
         properties: {
           nombre: {
-            type: "String"
+            type: String,
+            example: "Pedro"
           },
           apellido: {
-            type: "String"
+            type: String,
+            example: "Fernandez"
           },
           legajo: {
-            type: "String"
+            type: String,
+            example: "u666666"
           },
           dni: {
-            type: "String"
+            type: String,
+            example: "12345678"
           },
           fechacumpleanos: {
-            type: "Date"
+            type: Date,
+            example: "1988/12/21"
           },
           rol: {
-            type: "String"
+            type: String,
+            example: "Trainee"
           },
           dnijefe: {
-            type: "String"
+            type: String,
+            example: "29874534"
           },
           gerencia: {
-            type: "String"
+            type: String,
+            example: "COO"
           },
           sector: {
-            type: "String"
+            type: String,
+            example: "Personal"
           }
         }
       },
@@ -58,13 +67,13 @@ const swaggerDefinition = {
         required: [],
         properties: {
           nombre: {
-            type: "String"
+            type: String
           },
           apellido: {
-            type: "String"
+            type: String
           },
           dni: {
-            type: "String"
+            type: String
           }
         }
       }
