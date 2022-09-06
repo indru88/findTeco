@@ -2,7 +2,10 @@ const config = require('config')
 const nodemailer = require('nodemailer');
 const tablaHtml = require('../utils/tablaHtml')
 
-
+/**
+ * Genera un transport para nodemailer
+ * @returns transport
+ */
 const createTrans = () => {
   const transport = nodemailer.createTransport({
     host: config.get('mail.MAIL_SMTP'),
@@ -15,6 +18,11 @@ const createTrans = () => {
   return transport;
 }
 
+/**
+ * Con esta función realizamos el envio del mail
+ * @param {*} resultado => Objeto json que contiene la info de la tabla final
+ * @returns 
+ */
 const sendMail = async (resultado) => {
   const transporter = createTrans()
   const info = await transporter.sendMail({

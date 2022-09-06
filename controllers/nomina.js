@@ -5,8 +5,8 @@ const { handleHttpError } = require('../utils/handleErrors');
 
 /**
  * Retorna UN registro filtrado x DNI
- * @param {*} req 
- * @param {*} res 
+ * @param {String} req dni
+ * @param {Object} res user
  */
 const nominaGet = async (req, res = response) => {
   try {
@@ -24,8 +24,7 @@ const nominaGet = async (req, res = response) => {
 
 /**
  * Retorna TODOS los registros
- * @param {*} req 
- * @param {*} res 
+ * @param {Object} res usuarios
  */
 const nominaGetAll = async (req, res = response) => {
   try {
@@ -38,9 +37,9 @@ const nominaGetAll = async (req, res = response) => {
 }
 
 /**
- * Agrega un registro
- * @param {*} req 
- * @param {*} res 
+ * Agrega un registro y devuelve el registro creado
+ * @param {Object} req body
+ * @param {Object} res usuario
  */
 const nominaPost = async (req, res = response) => {
   try {
@@ -56,15 +55,15 @@ const nominaPost = async (req, res = response) => {
 }
 
 /**
- * Modifica un registro
- * @param {*} req 
- * @param {*} res 
+ * Modifica un registro y devuelve el registro original
+ * @param {String} req dni
+ * @param {Object} res data
  */
 const nominaPut = async (req, res = response) => {
   try {
-    const { dni, ...body } = req.body;
+    const { dni: dni2, ...body } = req.body;
     // console.log(body)
-    const data = await Usuario.findOneAndUpdate({ dni: req.params.id }, { $set: body });
+    const data = await Usuario.findOneAndUpdate({ dni: req.params.dni }, { $set: body });
     if (data === null) {
       handleHttpError(res, 'NOT_FOUND', 400)
     } else {
@@ -78,9 +77,9 @@ const nominaPut = async (req, res = response) => {
 }
 
 /**
- * Elimina un registro
- * @param {*} req 
- * @param {*} res 
+ * Elimina un registro y devuelve el registro eliminado
+ * @param {String} req dni
+ * @param {Object} res user
  */
 const nominaDelete = async (req, res = response) => {
   try {

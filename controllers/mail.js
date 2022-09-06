@@ -5,12 +5,13 @@ const { handleHttpError } = require('../utils/handleErrors');
 const email = require('../config/mail')
 
 /**
- * Retorna envia el correo con los filtros enviados
- * @param {*} req 
- * @param {*} res 
+ * Envia una tabla HTML por correo
  */
 const emailer = async (req, res = response) => {
   try {
+    /**
+     * Query con mongoose para generar la tabla del mail
+     */
     const resultado = await Usuario.aggregate(
       [{
         $lookup:

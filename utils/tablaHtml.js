@@ -1,3 +1,6 @@
+/**
+ * Genera una tabla a partir de un objeto json
+ */
 module.exports = creaTablaHtml = (datos) => {
   let tabla = (
     '<style>table{border-collapse: collapse;}table td{border: 1px solid black;} table th {border: 1px solid gray;background-color: lightgrey;}</style>' +

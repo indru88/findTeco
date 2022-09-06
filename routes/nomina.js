@@ -94,7 +94,7 @@ router.post('/', validatorAdd, nominaPost)
  *        description: No tiene permisos '403'
  */
 
-router.put('/:id', nominaPut)
+router.put('/:dni', nominaPut)
 /**
  * Update Employee
  * @openapi
