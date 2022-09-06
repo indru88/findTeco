@@ -36,10 +36,11 @@ const sendMail = async (req, res = response) => {
           },
           "Gerencia": "$gerencia",
           "Sector": "$sector",
+          _id: 0
         }
       }]
     )
-    res.json({ resultado })
+    res.json(resultado)
     res.status(200)
   } catch (e) {
     handleHttpError(res, 'ERROR_DB')
