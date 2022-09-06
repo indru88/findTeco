@@ -11,7 +11,7 @@ router.get('/', nominaGetAll)
  * /nomina:
  *    get:
  *      tags:
- *        - employees
+ *        - Nomina
  *      summary: "Detalle de empleados"
  *      description: Obtener el listado de empleados
  *      security:
@@ -26,7 +26,7 @@ router.get('/', nominaGetAll)
  *             application/json:
  *               schema:
  *                   $ref: '#/components/schemas/nomina'
- *        '403':
+ *        '400':
  *          description: ERROR_GET_EMPLOYEES.
  */
 
@@ -37,7 +37,7 @@ router.get('/:dni', nominaGet)
  * /nomina/{dni}:
  *    get:
  *      tags:
- *        - employees
+ *        - Nomina
  *      summary: "Detalle de UN empleado"
  *      description: Obtiene la información de un empleado
  *      security:
@@ -65,7 +65,7 @@ router.post('/', validatorAdd, nominaPost)
  * /nomina:
  *    post:
  *      tags:
- *        - employess
+ *        - Nomina
  *      summary: "Agrega UN empleado"
  *      description: Agrega un empleado y obtiene el detalle del registro
  *      security:
@@ -100,7 +100,7 @@ router.put('/:id', nominaPut)
  * /nomina/{dni}:
  *    put:
  *      tags:
- *        - employess
+ *        - Nomina
  *      summary: "Modifica UN empleado"
  *      description: Modifica un empleado y obtiene el detalle del registro
  *      security:
@@ -140,7 +140,7 @@ router.delete('/:id', nominaDelete)
  * /nomina/{id}:
  *    delete:
  *      tags:
- *        - employees
+ *        - Nomina
  *      summary: "Eliminar un empleado"
  *      description: Elimiar un empleado de forma permanente
  *      security:
