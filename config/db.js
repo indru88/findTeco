@@ -17,16 +17,16 @@ const dbConection = async () => {
   }
 }
 
-const preload = () => {
-  const datos = cargarExcel()
-  // Usuario.count({}, function (err, count) {
-  //   if (count > 10) {
-  //     mongoose.connection.collection('usuarios').drop()
-  //     mongoose.connection.collection('nombrednis').drop()
-  //   }
-  // })
-  const newNomina = Usuario.insertMany(datos)
-  const nombDni = nombreDni.insertMany(datos)
+const preload = async () => {
+  Usuario.count({}, function (err, count) {
+    if (count > 10) {
+      mongoose.connection.collection('usuarios').drop()
+      mongoose.connection.collection('nombrednis').drop()
+    }
+    const datos = cargarExcel()
+    Usuario.insertMany(datos)
+    nombreDni.insertMany(datos)
+  })
 }
 
 module.exports = {
