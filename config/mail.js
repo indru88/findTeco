@@ -1,14 +1,15 @@
+const config = require('config')
 const nodemailer = require('nodemailer');
 const tablaHtml = require('../utils/tablaHtml')
 
 
 const createTrans = () => {
   const transport = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
+    host: config.get('mail.MAIL_SMTP'),
+    port: config.get('mail.MAIL_PORT'),
     auth: {
-      user: "984df72a24efa8",
-      pass: "d5218eeb031c33"
+      user: config.get('mail.MAIL_USER'),
+      pass: config.get('mail.MAIL_PASS')
     }
   });
   return transport;

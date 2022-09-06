@@ -1,0 +1,14 @@
+{
+  "app": {
+    "port": 3000
+  },
+  "db": {
+    "mongo": "mongodb://mongo:27017/db_nomina"
+  },
+  "mail": {
+    "MAIL_PORT": 2525,
+    "MAIL_SMTP": "smtp.mailtrap.io",
+    "MAIL_USER": "984df72a24efa8",
+    "MAIL_PASS": "d5218eeb031c33"
+  }
+}

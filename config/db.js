@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
+const config = require('config')
 const Usuario = require('../models/nomina')
 const nombreDni = require('../models/nombreDni')
 const cargarExcel = require('../utils/excel')
 
-
 const dbConection = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB, {
+    await mongoose.connect(config.get('db.mongo'), {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
@@ -19,7 +19,7 @@ const dbConection = async () => {
 
 const preload = async () => {
   Usuario.count({}, function (err, count) {
-    if (count > 10) {
+    if (count > 0) {
       mongoose.connection.collection('usuarios').drop()
       mongoose.connection.collection('nombrednis').drop()
     }

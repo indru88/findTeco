@@ -1,3 +1,4 @@
+const config = require('config')
 const express = require('express')
 const cors = require('cors');
 const { dbConection, preload } = require('../config/db');
@@ -8,7 +9,7 @@ class Server {
 
   constructor() {
     this.app = express();
-    this.port = process.env.PORT;
+    this.port = config.get('app.port');
     this.conectarDB()
     this.middlewares();
     this.routes();
