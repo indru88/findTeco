@@ -2,13 +2,14 @@ const { response } = require('express');
 const { matchedData } = require('express-validator');
 const Usuario = require('../models/nomina');
 const { handleHttpError } = require('../utils/handleErrors');
+const email = require('../config/mail')
 
 /**
  * Retorna envia el correo con los filtros enviados
  * @param {*} req 
  * @param {*} res 
  */
-const sendMail = async (req, res = response) => {
+const emailer = async (req, res = response) => {
   try {
     const resultado = await Usuario.aggregate(
       [{
@@ -23,12 +24,12 @@ const sendMail = async (req, res = response) => {
       { $addFields: { nombJefe: { $first: "$datosjefe.nombre" }, apeJefe: { $first: "$datosjefe.apellido" } } },
       {
         $project: {
-          "Apellido y nombre": { $concat: ["$apellido", " ", "$nombre"] },
+          "ApellidoNombre": { $concat: ["$apellido", " ", "$nombre"] },
           "Legajo": "$legajo",
           "DNI": "$dni",
           "Edad": { $dateDiff: { startDate: "$fechacumpleanos", endDate: "$$NOW", unit: "year" } },
           "Rol": "$rol",
-          "Jefe Inmediato": {
+          "JefeInmediato": {
             $ifNull: [
               { $concat: ["$nombJefe", " ", "$apeJefe"] },
               { $concat: ["$apellido", " ", "$nombre"] }
@@ -40,13 +41,15 @@ const sendMail = async (req, res = response) => {
         }
       }]
     )
-    res.json(resultado)
+    email.sendMail(resultado)
+    res.json({ msg: 'ok' })
     res.status(200)
+
   } catch (e) {
-    handleHttpError(res, 'ERROR_DB')
+    handleHttpError(res, 'ERROR_SENT_MAIL')
   }
 
 
 }
 
-module.exports = { sendMail }
+module.exports = { emailer }
