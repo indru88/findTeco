@@ -1,7 +1,6 @@
 # challengeTeco
 
  ## Setup:
- - npm install
  - docker-compose build
  - docker-compose up
 
