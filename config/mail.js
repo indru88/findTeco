@@ -1,4 +1,3 @@
-const config = require('config')
 const nodemailer = require('nodemailer');
 const tablaHtml = require('../utils/tablaHtml')
 
@@ -21,7 +20,7 @@ const createTrans = () => {
 /**
  * Con esta función realizamos el envio del mail
  * @param {*} resultado => Objeto json que contiene la info de la tabla final
- * @returns 
+ * @returns
  */
 const sendMail = async (resultado) => {
   const transporter = createTrans()
