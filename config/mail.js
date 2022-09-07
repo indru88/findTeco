@@ -1,3 +1,4 @@
+const config = require('config')
 const nodemailer = require('nodemailer');
 const tablaHtml = require('../utils/tablaHtml')
 

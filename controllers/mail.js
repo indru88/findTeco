@@ -37,7 +37,12 @@ const emailer = async (req, res = response) => {
             ]
           },
           "Gerencia": "$gerencia",
-          "Sector": "$sector",
+          "Sector": {
+            $ifNull: [
+              "$sector",
+              ""
+            ]
+          },
           _id: 0
         }
       }]
